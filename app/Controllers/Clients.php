@@ -2190,8 +2190,6 @@ class Clients extends Security_Controller
         $this->_validate_client_manage_access($user_info->client_id);
 
         $primary_contact = $this->Clients_model->get_primary_contact($user_info->client_id);
-
-        //only admin can change existing primary contact
         $is_primary_contact = $this->request->getPost('is_primary_contact');
         if ($is_primary_contact && $this->login_user->is_admin) {
             $user_data['is_primary_contact'] = 1;
@@ -2211,7 +2209,6 @@ class Clients extends Security_Controller
         }
 
         if ($this->Users_model->ci_save($user_data, $contact_id)) {
-            //has changed the existing primary contact? updete previous primary contact and set is_primary_contact=0
             if ($is_primary_contact) {
                 $user_data = array("is_primary_contact" => 0);
                 $this->Users_model->ci_save($user_data, $primary_contact);

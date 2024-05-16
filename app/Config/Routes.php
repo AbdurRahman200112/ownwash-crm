@@ -12,6 +12,12 @@ $routes = Services::routes();
  */
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Dashboard');
+$routes->post('customers/save', 'Customers::save');
+$routes->post('franchise/save', 'Franchise::save');
+$routes->post('franchises/list', 'Franchises::list');
+$routes->post('customerfetch/list_data', 'CustomerFetch::list_data');
+
+
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
