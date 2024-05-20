@@ -1,3 +1,8 @@
+<?php
+session_start();
+$userEmail = isset($_SESSION['email']) ? $_SESSION['email'] : "";
+$isAdmin = isset($_SESSION['is_admin']) ? $_SESSION['is_admin'] : 0;
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>

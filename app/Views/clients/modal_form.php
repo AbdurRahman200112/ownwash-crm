@@ -13,7 +13,7 @@
                         "class" => "form-control datepicker",
                         "placeholder" => "Registration Date",
                     )
-                  );
+                );
                 ?>
             </div>
         </div>
@@ -30,7 +30,7 @@
                         "class" => "form-control",
                         "placeholder" => "Customer Name",
                     )
-                  );
+                );
                 ?>
             </div>
         </div>
@@ -47,7 +47,7 @@
                         "class" => "form-control",
                         "placeholder" => "Address",
                     )
-                  );
+                );
                 ?>
             </div>
         </div>
@@ -135,28 +135,43 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group mt-3">
+            <div class="form-group">
                 <div class="row">
-                    <label for="deadline" class=" col-md-3">Assign Franchise</label>
-                    <div class=" col-md-9">
-                        <?php
-                        $options = array(
-                            'own wash crm 1' => 'Own Wash Crm 1',
-                            'own wash crm 2' => 'Own Wash Crm 2',
-                            'own wash crm 3' => 'Own Wash Crm 3',
-                            'own wash crm 4' => 'Own Wash Crm 4',
-                        );
-                        echo form_dropdown(
-                            'Assign Franchise',
-                            $options,
-                            '',
-                            array(
-                                'id' => 'status', // id attribute of the dropdown
-                                'class' => 'form-control' // CSS class
-                            )
-                        );
-                        ?>
+                    <label for="assignFranchise" class="col-md-3">Assign Franchise</label>
+                    <div class="col-md-9">
+                        <select name="assignFranchise" id="assignFranchise" class="form-control">
+                            <?php
+                            // Database connection configuration
+                            $servername = "localhost";
+                            $username = "root";
+                            $password = "";
+                            $dbname = "rise";
 
+                            // Create connection
+                            $conn = new mysqli($servername, $username, $password, $dbname);
+
+                            // Check connection
+                            if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            }
+
+                            // SQL query to fetch staff users
+                            $sql = "SELECT * FROM rise_users WHERE is_admin = '0' AND user_type != 'client'";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                // Output data of each row
+                                while ($row = $result->fetch_assoc()) {
+                                    $fullName = $row['email'];
+                                    echo "<option value='" . $fullName . "'>" . $fullName . "</option>";
+                                }
+                            } else {
+                                echo "<option value=''>No clients found</option>";
+                            }
+                            
+                            $conn->close();
+                            ?>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -179,7 +194,7 @@
                                 'class' => 'form-control'
                             )
                         );
-                    ?>
+                        ?>
                     </div>
                 </div>
             </div>
@@ -196,7 +211,7 @@
                                 "class" => "form-control",
                                 "placeholder" => "Any Remarks",
                             )
-                         );
+                        );
                         ?>
                     </div>
                 </div>

@@ -2,13 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Libraries\Excel_import;
-
 class Team_members extends Security_Controller {
-
-    use Excel_import;
-
-    private $roles_id_by_title = array();
 
     function __construct() {
         parent::__construct();
@@ -1062,6 +1056,18 @@ class Team_members extends Security_Controller {
         return $this->download_app_files(get_general_file_path("team_members", $file_info->user_id), $file_data);
     }
 
+    /* upload a post file */
+
+    function upload_file() {
+        upload_file_to_temp();
+    }
+
+    /* check valid file for user */
+
+    function validate_file() {
+        return validate_post_file($this->request->getPost("file_name"));
+    }
+
     /* delete a file */
 
     function delete_file() {
@@ -1131,121 +1137,6 @@ class Team_members extends Security_Controller {
             return $this->template->view("team_members/notes/index", $view_data);
         }
     }
-
-    private function _validate_excel_import_access() {
-        return $this->access_only_admin_or_member_creator();
-    }
-
-    private function _get_controller_slag() {
-        return "team_members";
-    }
-
-    private function _get_custom_field_context() {
-        return "team_members";
-    }
-
-    private function _get_headers_for_import() {
-        return array(
-            array("name" => "first_name", "required" => true, "required_message" => app_lang("import_team_member_error_name_field_required")),
-            array("name" => "last_name", "required" => true, "required_message" => app_lang("import_team_member_error_name_field_required")),
-            array("name" => "address"),
-            array("name" => "phone"),
-            array("name" => "gender"),
-            array("name" => "job_title", "required" => true, "required_message" => app_lang("import_team_member_error_job_title_field_required")),
-            array("name" => "email", "required" => true, "required_message" => app_lang("import_team_member_error_email_field_required"), "custom_validation" => function ($value, $row_data) {
-                    //checking duplicate email
-                    if ($this->Users_model->is_email_exists($value)) {
-                        return array("error" => app_lang("duplicate_email"));
-                    }
-                }),
-            array("name" => "role", "custom_validation" => function ($value, $row_data) {
-                //checking duplicate email
-                if ($value === strtolower("admin") && !$this->login_user->is_admin) {
-                    return array("error" => app_lang("only_admin_users_can_set_the_admin_role"));
-                }
-            })
-        );
-    }
-
-    function download_sample_excel_file() {
-        $this->access_only_admin_or_member_creator();
-        return $this->download_app_files(get_setting("system_file_path"), serialize(array(array("file_name" => "import-team-members-sample.xlsx"))));
-    }
-
-    private function _init_required_data_before_starting_import() {
-
-        $roles = $this->Roles_model->get_details()->getResult();
-        $roles_id_by_title = array();
-        foreach ($roles as $role) {
-            $roles_id_by_title[$role->title] = $role->id;
-        }
-
-        $this->roles_id_by_title = $roles_id_by_title;
-    }
-
-    private function _save_a_row_of_excel_data($row_data) {
-        $now = get_current_utc_time();
-
-        $team_member_data_array = $this->_prepare_team_member_data($row_data);
-        $team_member_data = get_array_value($team_member_data_array, "team_member_data");
-        $custom_field_values_array = get_array_value($team_member_data_array, "custom_field_values_array");
-
-        //couldn't prepare valid data
-        if (!($team_member_data && count($team_member_data) > 1)) {
-            return false;
-        }
-
-        //found information about team member, add some additional info
-        $team_member_data["created_at"] = $now;
-
-        //save team member data
-        $saved_id = $this->Users_model->ci_save($team_member_data);
-        if (!$saved_id) {
-            return false;
-        }
-
-        //save custom fields
-        $this->_save_custom_fields($saved_id, $custom_field_values_array);
-        return true;
-    }
-
-    private function _prepare_team_member_data($row_data) {
-        $team_member_data = array("user_type" => "staff");
-        $custom_field_values_array = array();
-
-        foreach ($row_data as $column_index => $value) {
-            if (!$value) {
-                continue;
-            }
-
-            $column_name = $this->_get_column_name($column_index);
-            if ($column_name == "role") {
-                //get existing role, if not then save as a team member
-                //can't save as a admin, save as a team member
-
-                if ($value == "Admin" || $value == "Team member") {
-                    $team_member_data["role_id"] = 0;
-                } else {
-                    $role_id = get_array_value($this->roles_id_by_title, $value);
-                    if ($role_id) {
-                        $team_member_data["role_id"] = $role_id;
-                    } else {
-                        $team_member_data["role_id"] = 0;
-                    }
-                }
-            } else if (strpos($column_name, 'cf') !== false) {
-                $this->_prepare_custom_field_values_array($column_name, $value, $custom_field_values_array);
-            } else {
-                $team_member_data[$column_name] = $value;
-            }
-        }
-
-        return array(
-            "team_member_data" => $team_member_data,
-            "custom_field_values_array" => $custom_field_values_array
-        );
-    }
-
 }
 
 /* End of file team_member.php */

@@ -124,22 +124,31 @@ class Security_Controller extends App_Controller {
     }
 
     //access only allowed team members
-    protected function access_only_allowed_members() {
-        if ($this->access_type === "all") {
-            return true; //can access if user has permission
-        } else if ($this->module_group === "ticket" && ($this->access_type === "specific" || $this->access_type === "assigned_only")) {
-            return true; //can access if it's tickets module and user has a pertial access
-        } else if ($this->module_group === "lead" && $this->access_type === "own") {
-            return true; //can access if it's leads module and user has access to own leads
-        } else if ($this->module_group === "client" && ($this->access_type === "own" || $this->access_type === "read_only" || $this->access_type === "specific")) {
-            return true;  //can access if it's clients module and user has a pertial access
-        } else if ($this->module_group === "estimate" && $this->access_type === "own") {
-            return true; //can access if it's estimates module and user has a pertial access
-        } else {
-            app_redirect("forbidden");
+    // protected function access_only_allowed_members() {
+    //     if ($this->access_type === "all") {
+    //         return true; //can access if user has permission
+    //     } else if ($this->module_group === "ticket" && ($this->access_type === "specific" || $this->access_type === "assigned_only")) {
+    //         return true; //can access if it's tickets module and user has a pertial access
+    //     } else if ($this->module_group === "lead" && $this->access_type === "own") {
+    //         return true; //can access if it's leads module and user has access to own leads
+    //     } else if ($this->module_group === "client" && ($this->access_type === "own" || $this->access_type === "read_only" || $this->access_type === "specific")) {
+    //         return true;  //can access if it's clients module and user has a pertial access
+    //     } else if ($this->module_group === "estimate" && $this->access_type === "own") {
+    //         return true; //can access if it's estimates module and user has a pertial access
+    //     } else {
+    //         app_redirect("forbidden");
+    //     }
+    // }
+    protected function access_only_allowed_members()
+    {
+        // Allow access for admin and staff (where user_type is not 'client')
+        if ($this->login_user->is_admin || $this->login_user->user_type == "staff") {
+            return true;
         }
-    }
 
+        // For clients or other user types, redirect to forbidden
+        app_redirect("forbidden");
+    }
     //access only allowed team members or client contacts 
     protected function access_only_allowed_members_or_client_contact($client_id) {
 
@@ -817,7 +826,7 @@ class Security_Controller extends App_Controller {
     //prepare the dropdown list of roles
     protected function _get_roles_dropdown() {
         $role_dropdown = array(
-            "0" => app_lang('team_member')
+            "0" => 'Franchise Member'
         );
 
         if ($this->login_user->is_admin) {

@@ -5,7 +5,8 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 class Rise_franchise_model extends Model {
-    protected $table = 'rise_franchise'; // specify table name
+    protected $table = 'rise_franchise'; 
+    protected $primaryKey = 'id';
 
     protected $allowedFields = [
         'registration_date',
@@ -17,10 +18,12 @@ class Rise_franchise_model extends Model {
         'status'
     ];
 
-    // Change method name to save_franchise
     public function save_franchise($postData) {
-        $this->insert($postData);
+        return $this->insert($postData);
     }
-
-    // You can add other model methods here if needed
+    
+    public function delete_franchise($franchiseId)
+    {
+        return $this->where('id', $franchiseId)->delete();
+    }
 }

@@ -1,5 +1,5 @@
 <div class="tab-content">
-    <?php echo form_open(get_uri("team_members/save_general_info/" . $user_info->id), array("id" => "general-info-form", "class" => "general-form dashed-row white", "role" => "form")); ?>
+<?php echo form_open(get_uri("team_members/save_general_info/" . $user_info->id), array("id" => "general-info-form", "class" => "general-form dashed-row white", "role" => "form")); ?>
     <div class="card">
         <div class=" card-header">
             <h4> <?php echo app_lang('general_info'); ?></h4>

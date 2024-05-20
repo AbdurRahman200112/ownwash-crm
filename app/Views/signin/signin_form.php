@@ -1,3 +1,8 @@
+<?php
+session_start();
+$userEmail = isset($_SESSION['email']) ? $_SESSION['email'] : "";
+$isAdmin = isset($_SESSION['is_admin']) ? $_SESSION['is_admin'] : 0;
+?>
 <div class="card bg-white mb15">
     <div class="card-header text-center">
         <?php if (get_setting("show_logo_in_signin_page") === "yes") { ?>

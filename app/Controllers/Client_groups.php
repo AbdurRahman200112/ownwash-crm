@@ -14,7 +14,6 @@ class Client_groups extends Security_Controller {
         return $this->template->rander("client_groups/index");
     }
 
-    //load client groups add/edit modal form
     function modal_form() {
         $this->validate_submitted_data(array(
             "id" => "numeric"
@@ -23,8 +22,6 @@ class Client_groups extends Security_Controller {
         $view_data['model_info'] = $this->Client_groups_model->get_one($this->request->getPost('id'));
         return $this->template->view('client_groups/modal_form', $view_data);
     }
-
-    //save client groups category
     function save() {
 
         $this->validate_submitted_data(array(
@@ -43,8 +40,6 @@ class Client_groups extends Security_Controller {
             echo json_encode(array("success" => false, 'message' => app_lang('error_occurred')));
         }
     }
-
-    //delete/undo an client groups
     function delete() {
         $this->validate_submitted_data(array(
             "id" => "required|numeric"
@@ -65,8 +60,6 @@ class Client_groups extends Security_Controller {
             }
         }
     }
-
-    //get data for client groups list
     function list_data() {
         $list_data = $this->Client_groups_model->get_details()->getResult();
         $result = array();
@@ -75,23 +68,16 @@ class Client_groups extends Security_Controller {
         }
         echo json_encode(array("data" => $result));
     }
-
-    //get an expnese category list row
     private function _row_data($id) {
         $options = array("id" => $id);
         $data = $this->Client_groups_model->get_details($options)->getRow();
         return $this->_make_row($data);
     }
 
-    //prepare an client groups category list row
     private function _make_row($data) {
         return array($data->title,
             modal_anchor(get_uri("client_groups/modal_form"), "<i data-feather='edit' class='icon-16'></i>", array("class" => "edit", "title" => app_lang('edit_client_group'), "data-post-id" => $data->id))
             . js_anchor("<i data-feather='x' class='icon-16'></i>", array('title' => app_lang('delete_client_group'), "class" => "delete", "data-id" => $data->id, "data-action-url" => get_uri("client_groups/delete"), "data-action" => "delete"))
         );
     }
-
 }
-
-/* End of file client_groups.php */
-/* Location: ./app/controllers/client_groups.php */

@@ -2,17 +2,20 @@
 
 namespace App\Controllers;
 
-class Signin extends App_Controller {
+class Signin extends App_Controller
+{
 
     private $signin_validation_errors;
 
-    function __construct() {
+    function __construct()
+    {
         parent::__construct();
         $this->signin_validation_errors = array();
         helper('email');
     }
 
-    function index() {
+    function index()
+    {
         if ($this->Users_model->login_user_id()) {
             app_redirect('dashboard/view');
         } else {
@@ -26,7 +29,8 @@ class Signin extends App_Controller {
         }
     }
 
-    private function has_recaptcha_error() {
+    private function has_recaptcha_error()
+    {
         $recaptcha_post_data = $this->request->getPost("g-recaptcha-response");
         $response = $this->is_valid_recaptcha($recaptcha_post_data);
 
@@ -38,7 +42,8 @@ class Signin extends App_Controller {
         }
     }
 
-    private function is_valid_recaptcha($recaptcha_post_data) {
+    private function is_valid_recaptcha($recaptcha_post_data)
+    {
         //load recaptcha lib
         require_once(APPPATH . "ThirdParty/recaptcha/autoload.php");
         $recaptcha = new \ReCaptcha\ReCaptcha(get_setting("re_captcha_secret_key"));
@@ -58,17 +63,75 @@ class Signin extends App_Controller {
     }
 
     // check authentication
-    function authenticate() {
+    // function authenticate() {
+    //     $validation = $this->validate_submitted_data(array(
+    //         "email" => "required|valid_email",
+    //         "password" => "required"
+    //             ), true);
+
+    //     $email = $this->request->getPost("email");
+    //     $password = $this->request->getPost("password");
+    //     if (!$email) {
+    //         //loaded the page directly
+    //         app_redirect('signin');
+    //     }
+
+    //     if (is_array($validation)) {
+    //         //has validation errors
+    //         $this->signin_validation_errors = $validation;
+    //     }
+
+    //     //check if there reCaptcha is enabled
+    //     //if reCaptcha is enabled, check the validation
+    //     if (get_setting("re_captcha_secret_key")) {
+    //         //in this function, if any error found in recaptcha, that will be added
+    //         $this->has_recaptcha_error();
+    //     }
+
+    //     //don't check password if there is any error
+    //     if ($this->signin_validation_errors) {
+    //         $this->session->setFlashdata("signin_validation_errors", $this->signin_validation_errors);
+    //         app_redirect('signin');
+    //     }
+
+    //     if (!$this->Users_model->authenticate($email, $password)) {
+    //         //authentication failed
+    //         array_push($this->signin_validation_errors, app_lang("authentication_failed"));
+    //         $this->session->setFlashdata("signin_validation_errors", $this->signin_validation_errors);
+    //         app_redirect('signin');
+    //     }
+
+    //     //authentication success
+    //     $redirect = $this->request->getPost("redirect");
+    //     if ($redirect) {
+    //         $session = session();
+    //         $session->set('email', $email);
+    //         $allowed_host = $_SERVER['HTTP_HOST'];
+
+    //         $parsed_redirect = parse_url($redirect);
+    //         $redirect_host = get_array_value($parsed_redirect, "host");
+    //         if ($allowed_host === $redirect_host) {
+    //             return redirect()->to($redirect);
+    //         } else {
+    //             app_redirect('dashboard/view');
+    //         }
+    //     } else {
+    //         app_redirect('dashboard/view');
+    //     }
+    // }
+    // check authentication
+    function authenticate()
+    {
         $validation = $this->validate_submitted_data(array(
             "email" => "required|valid_email",
             "password" => "required"
-                ), true);
+        ), true);
 
         $email = $this->request->getPost("email");
         $password = $this->request->getPost("password");
         if (!$email) {
             //loaded the page directly
-            app_redirect('signin');
+            return redirect()->to('signin');
         }
 
         if (is_array($validation)) {
@@ -86,39 +149,45 @@ class Signin extends App_Controller {
         //don't check password if there is any error
         if ($this->signin_validation_errors) {
             $this->session->setFlashdata("signin_validation_errors", $this->signin_validation_errors);
-            app_redirect('signin');
+            return redirect()->to('signin');
         }
 
         if (!$this->Users_model->authenticate($email, $password)) {
             //authentication failed
             array_push($this->signin_validation_errors, app_lang("authentication_failed"));
             $this->session->setFlashdata("signin_validation_errors", $this->signin_validation_errors);
-            app_redirect('signin');
+            return redirect()->to('signin');
         }
 
         //authentication success
+        $session = session();
+        $session->set('email', $email); // Store the user's email in the session
+
+
+
         $redirect = $this->request->getPost("redirect");
         if ($redirect) {
             $allowed_host = $_SERVER['HTTP_HOST'];
-
             $parsed_redirect = parse_url($redirect);
             $redirect_host = get_array_value($parsed_redirect, "host");
             if ($allowed_host === $redirect_host) {
                 return redirect()->to($redirect);
             } else {
-                app_redirect('dashboard/view');
+                return redirect()->to('dashboard/view');
             }
         } else {
-            app_redirect('dashboard/view');
+            return redirect()->to('dashboard/view');
         }
     }
 
-    function sign_out() {
+    function sign_out()
+    {
         $this->Users_model->sign_out();
     }
 
     //send an email to users mail with reset password link
-    function send_reset_password_mail() {
+    function send_reset_password_mail()
+    {
         $this->validate_submitted_data(array(
             "email" => "required|valid_email"
         ));
@@ -191,13 +260,15 @@ class Signin extends App_Controller {
     }
 
     //show forgot password recovery form
-    function request_reset_password() {
+    function request_reset_password()
+    {
         $view_data["form_type"] = "request_reset_password";
         return $this->template->view('signin/index', $view_data);
     }
 
     //when user clicks to reset password link from his/her email, redirect to this url
-    function new_password($key) {
+    function new_password($key)
+    {
         $valid_key = $this->is_valid_reset_password_key($key);
 
         if ($valid_key) {
@@ -217,7 +288,8 @@ class Signin extends App_Controller {
     }
 
     //finally reset the old password and save the new password
-    function do_reset_password() {
+    function do_reset_password()
+    {
         $this->validate_submitted_data(array(
             "key" => "required",
             "password" => "required"
@@ -246,7 +318,8 @@ class Signin extends App_Controller {
     }
 
     //check valid key
-    private function is_valid_reset_password_key($verification_code = "") {
+    private function is_valid_reset_password_key($verification_code = "")
+    {
 
         if ($verification_code) {
             $options = array("code" => $verification_code, "type" => "reset_password");
@@ -264,5 +337,4 @@ class Signin extends App_Controller {
             }
         }
     }
-
 }
