@@ -34,7 +34,7 @@
     $("#lead-table").appTable({
     source: '<?php echo_uri("leads/list_data") ?>',
             serverSide: true,
-            smartFilterIdentity: "all_leads_list", //a to z and _ only. should be unique to avoid conflicts
+            smartFilterIdentity: "all_leads_list",
             ignoreSavedFilter: ignoreSavedFilter,
             columns: [
             {title: "<?php echo app_lang("name") ?>", "class": "all", order_by: "company_name"},

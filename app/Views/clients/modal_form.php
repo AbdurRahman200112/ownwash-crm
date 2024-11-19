@@ -141,26 +141,21 @@
                     <div class="col-md-9">
                         <select name="assignFranchise" id="assignFranchise" class="form-control">
                             <?php
-                            // Database connection configuration
                             $servername = "localhost";
                             $username = "root";
                             $password = "";
                             $dbname = "rise";
 
-                            // Create connection
                             $conn = new mysqli($servername, $username, $password, $dbname);
 
-                            // Check connection
                             if ($conn->connect_error) {
                                 die("Connection failed: " . $conn->connect_error);
                             }
 
-                            // SQL query to fetch staff users
                             $sql = "SELECT * FROM rise_users WHERE is_admin = '0' AND user_type != 'client'";
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {
-                                // Output data of each row
                                 while ($row = $result->fetch_assoc()) {
                                     $fullName = $row['email'];
                                     echo "<option value='" . $fullName . "'>" . $fullName . "</option>";

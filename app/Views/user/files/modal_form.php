@@ -2,12 +2,8 @@
 <div class="modal-body clearfix">
     <div class="container-fluid">
         <input type="hidden" name="client_id" value="<?php echo $client_id; ?>" />
-        <?php
-        echo view("includes/multi_file_uploader", array(
-            "upload_url" => get_uri("clients/upload_file"),
-            "validation_url" => get_uri("clients/validate_file"),
-        ));
-        ?>
+        <input type="hidden" name="folder_id" value="<?php echo $folder_id; ?>" />
+        <?php echo view("includes/multi_file_uploader"); ?>
     </div>
 </div>
 

@@ -6,8 +6,8 @@
             <div class="widget-title clearfix">
                 <div class="row">
                     <div id="general-info-label" class="col-sm-4"><i data-feather="circle" class="icon-16"></i><strong> <?php echo app_lang('general_info'); ?></strong></div>
-                    <div id="job-info-label" class="col-sm-4"><i data-feather="circle" class="icon-16"></i><strong>  <?php echo app_lang('job_info'); ?></strong></div>
-                    <div id="account-info-label" class="col-sm-4"><i data-feather="circle" class="icon-16"></i><strong>  <?php echo app_lang('account_settings'); ?></strong></div> 
+                    <div id="job-info-label" class="col-sm-4"><i data-feather="circle" class="icon-16"></i><strong> <?php echo app_lang('job_info'); ?></strong></div>
+                    <div id="account-info-label" class="col-sm-4"><i data-feather="circle" class="icon-16"></i><strong> <?php echo app_lang('account_settings'); ?></strong></div>
                 </div>
             </div>
 
@@ -21,14 +21,14 @@
             <div role="tabpanel" class="tab-pane active" id="general-info-tab">
                 <div class="form-group">
                     <div class="row">
-                        <label for="first_name" class=" col-md-3"><?php echo app_lang('first_name'); ?></label>
+                        <label for="first_name" class=" col-md-3">Franchise Name</label>
                         <div class=" col-md-9">
                             <?php
                             echo form_input(array(
                                 "id" => "first_name",
                                 "name" => "first_name",
                                 "class" => "form-control",
-                                "placeholder" => app_lang('first_name'),
+                                "placeholder" =>'Franchise Name',
                                 "autofocus" => true,
                                 "data-rule-required" => true,
                                 "data-msg-required" => app_lang("field_required"),
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <div class="row">
                         <label for="last_name" class=" col-md-3"><?php echo app_lang('last_name'); ?></label>
                         <div class=" col-md-9">
@@ -53,7 +53,7 @@
                             ?>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group">
                     <div class="row">
                         <label for="address" class=" col-md-3"><?php echo app_lang('mailing_address'); ?></label>
@@ -86,44 +86,26 @@
                 </div>
                 <div class="form-group">
                     <div class="row">
-                        <label for="gender" class=" col-md-3"><?php echo app_lang('gender'); ?></label>
+                        <label for="gender" class=" col-md-3"><?php echo 'Remarks' ?></label>
                         <div class=" col-md-9">
                             <?php
-                            echo form_radio(array(
-                                "id" => "gender_male",
+                            echo form_textarea(array(
+                                "id" => "gender",
                                 "name" => "gender",
-                                "class" => "form-check-input",
-                                    ), "male", true);
+                                "class" => "form-control",
+                                "placeholder" => "Remarks"
+                            ));
                             ?>
-                            <label for="gender_male" class="mr15"><?php echo app_lang('male'); ?></label> 
-                            <?php
-                            echo form_radio(array(
-                                "id" => "gender_female",
-                                "name" => "gender",
-                                "class" => "form-check-input",
-                                    ), "female", false);
-                            ?>
-                            <label for="gender_female" class="mr15"><?php echo app_lang('female'); ?></label>
-                            <?php
-                            echo form_radio(array(
-                                "id" => "gender_other",
-                                "name" => "gender",
-                                "class" => "form-check-input",
-                                    ), "other", false);
-                            ?>
-                            <label for="gender_other" class=""><?php echo app_lang('other'); ?></label>
                         </div>
                     </div>
                 </div>
 
-
-                <?php echo view("custom_fields/form/prepare_context_fields", array("custom_fields" => $custom_fields, "label_column" => "col-md-3", "field_column" => " col-md-9")); ?> 
-
+                <?php echo view("custom_fields/form/prepare_context_fields", array("custom_fields" => $custom_fields, "label_column" => "col-md-3", "field_column" => " col-md-9")); ?>
             </div>
             <div role="tabpanel" class="tab-pane" id="job-info-tab">
                 <div class="form-group">
                     <div class="row">
-                        <label for="job_title" class=" col-md-3">Franchise Name</label>
+                        <label for="job_title" class=" col-md-3">City</label>
                         <div class=" col-md-9">
                             <?php
                             echo form_input(array(
@@ -152,32 +134,45 @@
                             ?>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <label for="salary_term" class=" col-md-3"><?php echo app_lang('salary_term'); ?></label>
-                        <div class=" col-md-9">
-                            <?php
-                            echo form_input(array(
-                                "id" => "salary_term",
-                                "name" => "salary_term",
-                                "class" => "form-control",
-                                "placeholder" => app_lang('salary_term')
-                            ));
-                            ?>
-                        </div>
-                    </div>
                 </div> -->
                 <div class="form-group">
                     <div class="row">
-                        <label for="date_of_hire" class=" col-md-3"><?php echo app_lang('date_of_hire'); ?></label>
+                        <label for="salary_term" class=" col-md-3"><?php echo 'Salary Term' ?></label>
+                        <div class=" col-md-9">
+                            <?php
+
+                            $options = array(
+                                'cancelled by franchise' => 'Cancelled by Franchise',
+                                'cancelled by customer' => 'Cancelled by Customer',
+                                'done' => 'Done',
+                                'fresh' => 'Fresh',
+                                'close' => 'Close'
+                            );
+
+                            echo form_dropdown(
+                                'salary_term', // name attribute of the dropdown
+                                $options, // options array
+                                '',
+                                array(
+                                    'id' => 'salary_term', // id attribute of the dropdown
+                                    'name' => 'salary_term', // add name attribute
+                                    'class' => 'form-control' // CSS class
+                                )
+                            );
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <label for="date_of_hire" class=" col-md-3"><?php echo 'Registration Date'; ?></label>
                         <div class=" col-md-9">
                             <?php
                             echo form_input(array(
                                 "id" => "date_of_hire",
                                 "name" => "date_of_hire",
                                 "class" => "form-control",
-                                "placeholder" => app_lang('date_of_hire'),
+                                "placeholder" => 'Registration Date',
                                 "autocomplete" => "off"
                             ));
                             ?>
@@ -246,7 +241,7 @@
                     </div>
                 </div>
                 <div class="form-group ">
-                    <div class="col-md-12">  
+                    <div class="col-md-12">
                         <?php
                         echo form_checkbox("email_login_details", "1", true, "id='email_login_details' class='form-check-input'");
                         ?> <label for="email_login_details"><?php echo app_lang('email_login_details'); ?></label>
@@ -268,22 +263,27 @@
 <?php echo form_close(); ?>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $("#team_member-form").appForm({
-            onSuccess: function (result) {
-                if (result.success) {
-                    $("#team_member-table").appTable({newData: result.data, dataId: result.id});
-                }
-            },
-            onSubmit: function () {
-                $("#form-previous").attr('disabled', 'disabled');
-            },
-            onAjaxSuccess: function () {
-                $("#form-previous").removeAttr('disabled');
+  $(document).ready(function() {
+    $("#team_member-form").appForm({
+        onSuccess: function(result) {
+            if (result.success) {
+                window.location.href = "<?php echo base_url('index.php/team_members/index'); ?>";
             }
-        });
+        },
+        onSubmit: function() {
+            $("#form-previous").attr('disabled', 'disabled');
+            $("#form-next").attr('disabled', 'disabled');
+            $("#form-submit").attr('disabled', 'disabled');
+        },
+        onAjaxSuccess: function() {
+            $("#form-previous").removeAttr('disabled');
+            $("#form-next").removeAttr('disabled');
+            $("#form-submit").removeAttr('disabled');
+        }
+    });
 
-        $("#team_member-form input").keydown(function (e) {
+
+        $("#team_member-form input").keydown(function(e) {
             if (e.keyCode === 13) {
                 e.preventDefault();
                 if ($('#form-submit').hasClass('hide')) {
@@ -293,20 +293,20 @@
                 }
             }
         });
-        setTimeout(function () {
+        setTimeout(function() {
             $("#first_name").focus();
         }, 200);
         $("#team_member-form .select2").select2();
 
         setDatePicker("#date_of_hire");
 
-        $("#form-previous").click(function () {
+        $("#form-previous").click(function() {
             var $generalTab = $("#general-info-tab"),
-                    $jobTab = $("#job-info-tab"),
-                    $accountTab = $("#account-info-tab"),
-                    $previousButton = $("#form-previous"),
-                    $nextButton = $("#form-next"),
-                    $submitButton = $("#form-submit");
+                $jobTab = $("#job-info-tab"),
+                $accountTab = $("#account-info-tab"),
+                $previousButton = $("#form-previous"),
+                $nextButton = $("#form-next"),
+                $submitButton = $("#form-submit");
 
             if ($accountTab.hasClass("active")) {
                 $accountTab.removeClass("active");
@@ -322,13 +322,13 @@
             }
         });
 
-        $("#form-next").click(function () {
+        $("#form-next").click(function() {
             var $generalTab = $("#general-info-tab"),
-                    $jobTab = $("#job-info-tab"),
-                    $accountTab = $("#account-info-tab"),
-                    $previousButton = $("#form-previous"),
-                    $nextButton = $("#form-next"),
-                    $submitButton = $("#form-submit");
+                $jobTab = $("#job-info-tab"),
+                $accountTab = $("#account-info-tab"),
+                $previousButton = $("#form-previous"),
+                $nextButton = $("#form-next"),
+                $submitButton = $("#form-submit");
             if (!$("#team_member-form").valid()) {
                 return false;
             }
@@ -357,17 +357,17 @@
             }
         });
 
-        $("#form-submit").click(function () {
+        $("#form-submit").click(function() {
             $("#team_member-form").trigger('submit');
         });
 
-        $("#generate_password").click(function () {
+        $("#generate_password").click(function() {
             $("#password").val(getRndomString(8));
         });
 
-        $("#show_hide_password").click(function () {
+        $("#show_hide_password").click(function() {
             var $target = $("#password"),
-                    type = $target.attr("type");
+                type = $target.attr("type");
             if (type === "password") {
                 $(this).attr("title", "<?php echo app_lang("hide_text"); ?>");
                 $(this).html("<span data-feather='eye-off' class='icon-16'></span>");
@@ -381,7 +381,7 @@
             }
         });
 
-        $("#user-role").change(function () {
+        $("#user-role").change(function() {
             if ($(this).val() === "admin") {
                 $("#user-role-help-block").removeClass("hide");
             } else {
@@ -389,7 +389,7 @@
             }
         });
 
-        $("#email_login_details").click(function () {
+        $("#email_login_details").click(function() {
             if ($(this).is(":checked")) {
                 $("#password").attr("data-rule-required", true);
                 $("#password").attr("data-msg-required", "<?php echo app_lang("field_required"); ?>");

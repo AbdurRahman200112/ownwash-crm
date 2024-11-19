@@ -127,7 +127,6 @@ class Team_members extends Security_Controller {
     }
 
     /* save new member */
-
     function add_team_member() {
         $this->access_only_admin_or_member_creator();
 
@@ -140,7 +139,7 @@ class Team_members extends Security_Controller {
         $this->validate_submitted_data(array(
             "email" => "required|valid_email",
             "first_name" => "required",
-            "last_name" => "required",
+            // "last_name" => "required",
             "job_title" => "required",
             "role" => "required"
         ));
@@ -222,6 +221,7 @@ class Team_members extends Security_Controller {
         }
     }
 
+
     /* open invitation modal */
 
     function invitation_modal() {
@@ -298,31 +298,46 @@ class Team_members extends Security_Controller {
             echo json_encode(array('success' => false, 'message' => app_lang('error_occurred')));
         }
     }
-
-    //prepere the data for members list
-    function list_data() {
+    public function list_data() {
         if (!$this->can_view_team_members_list()) {
             app_redirect("forbidden");
         }
-
+    
+        $start_date = $this->request->getGet('start_date');
+        $end_date = $this->request->getGet('end_date');
+        $status = $this->request->getGet('status');
+    
+        // Debug lines
+        error_log("Start Date: " . $start_date);
+        error_log("End Date: " . $end_date);
+        error_log("Status: " . $status);
+    
         $custom_fields = $this->Custom_fields_model->get_available_fields_for_table("team_members", $this->login_user->is_admin, $this->login_user->user_type);
+    
         $options = array(
-            "status" => $this->request->getPost("status"),
+            "status" => $status,
             "user_type" => "staff",
             "custom_fields" => $custom_fields,
             "custom_field_filter" => $this->prepare_custom_field_filter_values("team_members", $this->login_user->is_admin, $this->login_user->user_type)
         );
-
+    
+        if ($start_date && $end_date) {
+            $options['start_date'] = $start_date;
+            $options['end_date'] = $end_date;
+        }
+    
         $list_data = $this->Users_model->get_details($options)->getResult();
+    
         $result = array();
         foreach ($list_data as $data) {
-            $result[] = $this->_make_row($data, $custom_fields);
+            if ($data->user_type == "staff") {
+                $result[] = $this->_make_row($data, $custom_fields);
+            }
         }
+    
         echo json_encode(array("data" => $result));
     }
-
-    //get a row data for member list
-    function _row_data($id) {
+        function _row_data($id) {
         validate_numeric_value($id);
         $custom_fields = $this->Custom_fields_model->get_available_fields_for_table("team_members", $this->login_user->is_admin, $this->login_user->user_type);
         $options = array(
@@ -334,38 +349,83 @@ class Team_members extends Security_Controller {
         return $this->_make_row($data, $custom_fields);
     }
 
-    //prepare team member list row
     private function _make_row($data, $custom_fields) {
         $image_url = get_avatar($data->image);
         $user_avatar = "<span class='avatar avatar-xs'><img src='$image_url' alt='...'></span>";
         $full_name = $data->first_name . " " . $data->last_name . " ";
-
-        //check contact info view permissions
-        $show_cotact_info = $this->can_view_team_members_contact_info();
-
+    
+        // Check contact info view permissions
+        $show_contact_info = $this->can_view_team_members_contact_info();
+    
+        // Initialize row data
         $row_data = array(
             $user_avatar,
             get_team_member_profile_link($data->id, $full_name),
+            isset($data->date_of_hire) ? $data->date_of_hire : "-", // Add date_of_hire
             $data->job_title,
-            $show_cotact_info ? $data->email : "",
-            $show_cotact_info && $data->phone ? $data->phone : "-"
+            $show_contact_info ? $data->email : "",
+            $show_contact_info && $data->phone ? $data->phone : "-",
+            isset($data->gender) ? $data->gender : "-", // Add remarks
+            $data->salary_term
         );
-
+    
         foreach ($custom_fields as $field) {
             $cf_id = "cfv_" . $field->id;
             $row_data[] = $this->template->view("custom_fields/output_" . $field->field_type, array("value" => $data->$cf_id));
         }
-
+    
         $delete_link = "";
         if ($this->_can_delete_team_member($data)) {
             $delete_link = js_anchor("<i data-feather='x' class='icon-16'></i>", array('title' => app_lang('delete_team_member'), "class" => "delete", "data-id" => $data->id, "data-action-url" => get_uri("team_members/delete"), "data-action" => "delete-confirmation"));
         }
-
+    
         $row_data[] = $delete_link;
-
+    
         return $row_data;
     }
+        public function edits($id) {
+        // Get the team member details from the database based on the ID
+        $team_member = $this->Users_model->get_details($id);
 
+        if ($team_member) {
+            // Pass the team member details to the view
+            $data['team_member'] = $team_member;
+            // Load the edit view
+            $this->load->view('team_members/edit', $data);
+        } else {
+            // If the team member doesn't exist, show an error message or redirect
+            // For example:
+            // $this->session->set_flashdata('error', 'Team member not found.');
+            redirect('team_members/view'); // Redirect to the view page
+        }
+    }
+    public function update() {
+        // Check if it's an AJAX request
+        if ($this->input->is_ajax_request()) {
+            // Get the posted data
+            $id = $this->input->post('id');
+            $name = $this->input->post('name');
+            $date = $this->input->post('date');
+            $franchise = $this->input->post('franchise');
+
+            // Perform validation if needed
+
+            // Update the team member data in the database
+            // Example:
+            // $this->load->model('Your_model');
+            // $result = $this->Your_model->update_member($id, $name, $date, $franchise);
+
+            // Assuming the update was successful, send a response
+            $response['success'] = true;
+            $response['message'] = 'Data updated successfully';
+
+            // Send JSON response
+            echo json_encode($response);
+        } else {
+            // If it's not an AJAX request, show 404 page or handle as needed
+            show_404();
+        }
+    }
     //delete a team member
     function delete() {
 

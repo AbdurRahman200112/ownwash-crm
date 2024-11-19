@@ -16,7 +16,6 @@
                 </li>
 
                 <?php
-                // get the array of hidden topbar menus
                 $hidden_topbar_menus = explode(",", get_setting("user_" . $user . "_hidden_topbar_menus"));
 
                 // if (!in_array("to_do", $hidden_topbar_menus)) {

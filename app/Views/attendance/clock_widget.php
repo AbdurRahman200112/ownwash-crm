@@ -1,4 +1,4 @@
-<div id="js-clock-in-out" class="card dashboard-icon-widget clock-in-out-card">
+<!-- <div id="js-clock-in-out" class="card dashboard-icon-widget clock-in-out-card">
     <div class="card-body">
         <div class="widget-icon  <?php echo (isset($clock_status->id)) ? 'bg-info' : 'bg-coral'; ?> ">
             <i data-feather="clock" class="icon"></i>
@@ -18,4 +18,4 @@
             ?>
         </div>
     </div>
-</div>
+</div> -->

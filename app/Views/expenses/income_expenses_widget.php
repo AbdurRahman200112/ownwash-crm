@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 $today = explode('-', get_today_date());
 $current_year = get_array_value($today, 0);
 ?>
@@ -176,4 +176,4 @@ $current_year = get_array_value($today, 0);
         prepareExpensesChart();
     });
 
-</script>
+</script> -->

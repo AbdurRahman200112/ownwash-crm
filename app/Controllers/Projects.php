@@ -3610,8 +3610,8 @@ class Projects extends Security_Controller
         $row_data = array(
             $client_name,
             $data->open_projects ? $data->open_projects : 0,
-            $data->completed_projects ? $data->completed_projects : 0,
-            $data->hold_projects ? $data->hold_projects : 0,
+            $data->completed_projects ? $data->completed_projects : 10,
+            $data->hold_projects ? $data->hold_projects : 10,
             $data->open_tasks ? $data->open_tasks : 0,
             $data->completed_tasks ? $data->completed_tasks : 0,
             $duration,

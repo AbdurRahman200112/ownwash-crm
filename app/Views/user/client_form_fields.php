@@ -11,7 +11,7 @@
                 "name" => "account_type",
                 "class" => "form-check-input account_type",
                 "data-msg-required" => app_lang("field_required"),
-                    ), "organization", ($model_info->type === "organization") ? true : (($model_info->type !== "person") ? true : false));
+            ), "organization", ($model_info->type === "organization") ? true : (($model_info->type !== "person") ? true : false));
             ?>
             <label for="type_organization" class="mr15"><?php echo app_lang('organization'); ?></label>
             <?php
@@ -20,7 +20,7 @@
                 "name" => "account_type",
                 "class" => "form-check-input account_type",
                 "data-msg-required" => app_lang("field_required"),
-                    ), "person", ($model_info->type === "person") ? true : false);
+            ), "person", ($model_info->type === "person") ? true : false);
             ?>
             <label for="type_person" class=""><?php echo app_lang('person'); ?></label>
         </div>
@@ -278,7 +278,7 @@
                 ?>
             </div>
         </div>
-    </div>    
+    </div>
     <div class="form-group">
         <div class="row">
             <label for="currency_symbol" class="<?php echo $label_column; ?>"><?php echo app_lang('currency_symbol'); ?></label>
@@ -315,7 +315,7 @@
         </div>
     </div>
 <?php } ?>
-<?php echo view("custom_fields/form/prepare_context_fields", array("custom_fields" => $custom_fields, "label_column" => $label_column, "field_column" => $field_column)); ?> 
+<?php echo view("custom_fields/form/prepare_context_fields", array("custom_fields" => $custom_fields, "label_column" => $label_column, "field_column" => $field_column)); ?>
 
 <?php if ($login_user->is_admin && get_setting("module_invoice")) { ?>
     <div class="form-group">
@@ -326,44 +326,51 @@
             <div class="<?php echo $field_column; ?> col-xs-4 col-sm-6">
                 <?php
                 echo form_checkbox("disable_online_payment", "1", $model_info->disable_online_payment ? true : false, "id='disable_online_payment' class='form-check-input'");
-                ?>                       
+                ?>
             </div>
         </div>
     </div>
 <?php } ?>
 
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('[data-bs-toggle="tooltip"]').tooltip();
 
-<?php if (isset($currency_dropdown)) { ?>
+        <?php if (isset($currency_dropdown)) { ?>
             if ($('#currency').length) {
-                $('#currency').select2({data: <?php echo json_encode($currency_dropdown); ?>});
+                $('#currency').select2({
+                    data: <?php echo json_encode($currency_dropdown); ?>
+                });
             }
-<?php } ?>
+        <?php } ?>
 
-<?php if (isset($groups_dropdown)) { ?>
+        <?php if (isset($groups_dropdown)) { ?>
             $("#group_ids").select2({
                 multiple: true,
                 data: <?php echo json_encode($groups_dropdown); ?>
             });
-<?php } ?>
+        <?php } ?>
 
-<?php if ($login_user->is_admin || get_array_value($login_user->permissions, "client") === "all") { ?>
-            $('#created_by').select2({data: <?php echo $team_members_dropdown; ?>});
-<?php } ?>
+        <?php if ($login_user->is_admin || get_array_value($login_user->permissions, "client") === "all") { ?>
+            $('#created_by').select2({
+                data: <?php echo $team_members_dropdown; ?>
+            });
+        <?php } ?>
 
-<?php if ($login_user->user_type === "staff") { ?>
-            $("#client_labels").select2({multiple: true, data: <?php echo json_encode($label_suggestions); ?>});
-<?php } ?>
-        $('.account_type').click(function () {
+        <?php if ($login_user->user_type === "staff") { ?>
+            $("#client_labels").select2({
+                multiple: true,
+                data: <?php echo json_encode($label_suggestions); ?>
+            });
+        <?php } ?>
+        $('.account_type').click(function() {
             var inputValue = $(this).attr("value");
             if (inputValue === "person") {
-                $(".company_name_section").html("Name");
-                $(".company_name_input_section").attr("placeholder", "Name");
+                $(".company_name_section").html("<?php echo app_lang('name'); ?>");
+                $(".company_name_input_section").attr("placeholder", "<?php echo app_lang('name'); ?>");
             } else {
-                $(".company_name_section").html("Company name");
-                $(".company_name_input_section").attr("placeholder", "Company name");
+                $(".company_name_section").html("<?php echo app_lang('company_name'); ?>");
+                $(".company_name_input_section").attr("placeholder", "<?php echo app_lang('company_name'); ?>");
             }
         });
 

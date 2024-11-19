@@ -37,20 +37,23 @@
             columns: [
                 {visible: false, searchable: false},
                 {title: "<?php echo app_lang("subscription_id") ?>", "class": "w10p"},
-                {title: "<?php echo app_lang("title") ?> ", "class": "w15p"},
+                {title: "<?php echo app_lang("title") ?> "},
                 {visible: false, searchable: false},
                 {visible: false, searchable: false},
                 {visible: false, searchable: false},
-                {title: "<?php echo app_lang("next_billing_date") ?>", "iDataSort": 4, "class": "w10p"},
+                {title: "<?php echo app_lang("first_billing_date") ?>", "iDataSort": 5, "class": "w10p"},
+                {visible: false, searchable: false},
+                {title: "<?php echo app_lang("next_billing_date") ?>", "iDataSort": 7, "class": "w10p"},
                 {title: "<?php echo app_lang("repeat_every") ?>", "class": "w10p text-center"},
                 {title: "<?php echo app_lang("cycles") ?>", "class": "w10p text-center"},
                 {title: "<?php echo app_lang("status") ?>", "class": "w10p text-center"},
-                {title: "<?php echo app_lang("amount") ?>", "class": "w10p text-right"},
+                {title: "<?php echo app_lang("amount") ?>", "class": "w10p text-right"}
+<?php echo $custom_field_headers; ?>,
                 {visible: false, searchable: false}
             ],
-            printColumns: [1, 2, 6, 7, 8, 9, 10],
-            xlsColumns: [1, 2, 6, 7, 8, 9, 10],
-            summation: [{column: 10, dataType: 'currency', currencySymbol: currencySymbol}]
+            printColumns: combineCustomFieldsColumns([1, 2, 6, 8, 9, 10, 11, 12], '<?php echo $custom_field_headers; ?>'),
+            xlsColumns: combineCustomFieldsColumns([1, 2, 6, 7, 8, 9, 10], '<?php echo $custom_field_headers; ?>'),
+            summation: [{column: 12, dataType: 'currency', currencySymbol: currencySymbol}]
         });
     });
 </script>

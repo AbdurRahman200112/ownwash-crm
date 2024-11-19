@@ -13,23 +13,31 @@
 <script type="text/javascript">
     $(document).ready(function () {
         var currencySymbol = "<?php echo $client_info->currency_symbol; ?>";
+        var showCommentOption = false;
+        if ("<?php echo get_setting("enable_comments_on_proposals") == "1" ?>") {
+            showCommentOption = true;
+        }
+
         $("#proposal-table").appTable({
             source: '<?php echo_uri("proposals/proposal_list_data_of_client/" . $client_id) ?>',
             order: [[0, "desc"]],
             filterDropdown: [<?php echo $custom_field_filters; ?>],
             columns: [
-                {title: "<?php echo app_lang("proposal") ?>", "class": "w20p"},
+                {title: "<?php echo app_lang("proposal") ?>", "class": "w15p"},
                 {visible: false, searchable: false},
                 {visible: false, searchable: false},
-                {title: "<?php echo app_lang("proposal_date") ?>", "iDataSort": 2, "class": "w20p"},
+                {title: "<?php echo app_lang("proposal_date") ?>", "iDataSort": 2, "class": "w15p"},
                 {visible: false, searchable: false},
-                {title: "<?php echo app_lang("valid_until") ?>", "iDataSort": 4, "class": "w20p"},
-                {title: "<?php echo app_lang("amount") ?>", "class": "text-right w20p"},
-                {title: "<?php echo app_lang("status") ?>", "class": "text-center w20p"}
-                <?php echo $custom_field_headers; ?>,
+                {title: "<?php echo app_lang("valid_until") ?>", "iDataSort": 4, "class": "w15p"},
+                {title: "<?php echo app_lang("last_email_seen") ?>", "class": "w15p text-center"},
+                {title: "<?php echo app_lang("last_preview_seen") ?>", "class": "w15p text-center"},
+                {title: "<?php echo app_lang("amount") ?>", "class": "text-right w10p"},
+                {title: "<?php echo app_lang("status") ?>", "class": "text-center w10p"},
+                {visible: showCommentOption, title: "<?php echo app_lang("comments") ?>", "class": "text-center w50"}
+<?php echo $custom_field_headers; ?>,
                 {visible: false}
             ],
-            summation: [{column: 6, dataType: 'currency', currencySymbol: currencySymbol}]
+            summation: [{column: 8, dataType: 'currency', currencySymbol: currencySymbol}]
         });
     });
 </script>

@@ -1,0 +1,234 @@
+CRITICAL - 2024-05-27 11:25:13 --> Undefined property: App\Controllers\Team_members::$db
+in APPPATH\Controllers\Team_members.php on line 457.
+ 1 APPPATH\Controllers\Team_members.php(457): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$db', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 457)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 12:23:21 --> Undefined property: App\Controllers\Team_members::$db
+in APPPATH\Controllers\Team_members.php on line 447.
+ 1 APPPATH\Controllers\Team_members.php(447): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$db', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 447)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 12:23:24 --> Undefined property: App\Controllers\Team_members::$db
+in APPPATH\Controllers\Team_members.php on line 447.
+ 1 APPPATH\Controllers\Team_members.php(447): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$db', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 447)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 12:43:34 --> syntax error, unexpected token "<", expecting "function" or "const"
+in APPPATH\Controllers\Team_members.php on line 471.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Team_members')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Team_members')
+ 4 SYSTEMPATH\CodeIgniter.php(890): class_exists('\\App\\Controllers\\Team_members', true)
+ 5 SYSTEMPATH\CodeIgniter.php(484): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 12:46:07 --> Undefined property: App\Controllers\Team_members::$input
+in APPPATH\Controllers\Team_members.php on line 477.
+ 1 APPPATH\Controllers\Team_members.php(477): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$input', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 477)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 12:47:22 --> Undefined property: App\Controllers\Team_members::$input
+in APPPATH\Controllers\Team_members.php on line 477.
+ 1 APPPATH\Controllers\Team_members.php(477): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$input', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 477)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 12:49:25 --> Undefined property: App\Controllers\Team_members::$input
+in APPPATH\Controllers\Team_members.php on line 476.
+ 1 APPPATH\Controllers\Team_members.php(476): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$input', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 476)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 12:49:58 --> Undefined property: App\Controllers\Team_members::$input
+in APPPATH\Controllers\Team_members.php on line 490.
+ 1 APPPATH\Controllers\Team_members.php(490): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$input', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 490)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 12:50:04 --> Undefined property: App\Controllers\Team_members::$input
+in APPPATH\Controllers\Team_members.php on line 490.
+ 1 APPPATH\Controllers\Team_members.php(490): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$input', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 490)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 12:51:06 --> Undefined property: App\Controllers\Team_members::$input
+in APPPATH\Controllers\Team_members.php on line 490.
+ 1 APPPATH\Controllers\Team_members.php(490): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$input', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 490)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 12:51:50 --> Undefined property: App\Controllers\Team_members::$input
+in APPPATH\Controllers\Team_members.php on line 490.
+ 1 APPPATH\Controllers\Team_members.php(490): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$input', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 490)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 12:52:17 --> Undefined property: App\Controllers\Team_members::$input
+in APPPATH\Controllers\Team_members.php on line 490.
+ 1 APPPATH\Controllers\Team_members.php(490): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$input', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 490)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 12:52:33 --> Undefined property: App\Controllers\Team_members::$input
+in APPPATH\Controllers\Team_members.php on line 490.
+ 1 APPPATH\Controllers\Team_members.php(490): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$input', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 490)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 12:54:05 --> Undefined property: App\Controllers\Team_members::$db
+in APPPATH\Controllers\Team_members.php on line 462.
+ 1 APPPATH\Controllers\Team_members.php(462): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$db', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 462)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 12:56:26 --> Undefined property: App\Controllers\Team_members::$db
+in APPPATH\Controllers\Team_members.php on line 462.
+ 1 APPPATH\Controllers\Team_members.php(462): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$db', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 462)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 13:06:55 --> Undefined property: App\Controllers\Team_members::$db
+in APPPATH\Controllers\Team_members.php on line 462.
+ 1 APPPATH\Controllers\Team_members.php(462): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$db', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 462)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 13:08:47 --> Undefined property: App\Controllers\Team_members::$db
+in APPPATH\Controllers\Team_members.php on line 462.
+ 1 APPPATH\Controllers\Team_members.php(462): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$db', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 462)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 13:28:14 --> Undefined variable $files_tab
+in APPPATH\Views\user\view.php on line 84.
+ 1 APPPATH\Views\user\view.php(84): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $files_tab', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Views\\user\\view.php', 84)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xamppp\\htdocs\\ownshop-main\\app\\Views\\user\\view.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1180): CodeIgniter\View\View->render('user/view', [], true)
+ 5 APPPATH\Views\layout\index.php(62): view('user/view')
+ 6 SYSTEMPATH\View\View.php(224): include('C:\\xamppp\\htdocs\\ownshop-main\\app\\Views\\layout\\index.php')
+ 7 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1180): CodeIgniter\View\View->render('layout/index', [], true)
+ 9 APPPATH\Libraries\Template.php(38): view('layout/index', [...])
+10 APPPATH\Libraries\Template.php(22): App\Libraries\Template->view('layout/index', [...])
+11 APPPATH\Controllers\User.php(335): App\Libraries\Template->rander('user/view', [...])
+12 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\User->view('20')
+13 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+14 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+15 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 13:28:16 --> Undefined variable $files_tab
+in APPPATH\Views\user\view.php on line 84.
+ 1 APPPATH\Views\user\view.php(84): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $files_tab', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Views\\user\\view.php', 84)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xamppp\\htdocs\\ownshop-main\\app\\Views\\user\\view.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1180): CodeIgniter\View\View->render('user/view', [], true)
+ 5 APPPATH\Views\layout\index.php(62): view('user/view')
+ 6 SYSTEMPATH\View\View.php(224): include('C:\\xamppp\\htdocs\\ownshop-main\\app\\Views\\layout\\index.php')
+ 7 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1180): CodeIgniter\View\View->render('layout/index', [], true)
+ 9 APPPATH\Libraries\Template.php(38): view('layout/index', [...])
+10 APPPATH\Libraries\Template.php(22): App\Libraries\Template->view('layout/index', [...])
+11 APPPATH\Controllers\User.php(335): App\Libraries\Template->rander('user/view', [...])
+12 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\User->view('20')
+13 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+14 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+15 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 13:31:13 --> Undefined variable $can_edit_clients
+in APPPATH\Views\clients\contacts\view.php on line 79.
+ 1 APPPATH\Views\clients\contacts\view.php(79): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $can_edit_clients', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Views\\clients\\contacts\\view.php', 79)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xamppp\\htdocs\\ownshop-main\\app\\Views\\clients\\contacts\\view.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1180): CodeIgniter\View\View->render('clients/contacts/view', [], true)
+ 5 APPPATH\Views\layout\index.php(62): view('clients/contacts/view')
+ 6 SYSTEMPATH\View\View.php(224): include('C:\\xamppp\\htdocs\\ownshop-main\\app\\Views\\layout\\index.php')
+ 7 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1180): CodeIgniter\View\View->render('layout/index', [], true)
+ 9 APPPATH\Libraries\Template.php(38): view('layout/index', [...])
+10 APPPATH\Libraries\Template.php(22): App\Libraries\Template->view('layout/index', [...])
+11 APPPATH\Controllers\Clients.php(733): App\Libraries\Template->rander('clients/contacts/view', [...])
+12 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Clients->contact_profile('15')
+13 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Clients))
+14 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+15 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 13:31:17 --> Undefined variable $files_tab
+in APPPATH\Views\user\view.php on line 84.
+ 1 APPPATH\Views\user\view.php(84): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $files_tab', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Views\\user\\view.php', 84)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xamppp\\htdocs\\ownshop-main\\app\\Views\\user\\view.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1180): CodeIgniter\View\View->render('user/view', [], true)
+ 5 APPPATH\Views\layout\index.php(62): view('user/view')
+ 6 SYSTEMPATH\View\View.php(224): include('C:\\xamppp\\htdocs\\ownshop-main\\app\\Views\\layout\\index.php')
+ 7 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1180): CodeIgniter\View\View->render('layout/index', [], true)
+ 9 APPPATH\Libraries\Template.php(38): view('layout/index', [...])
+10 APPPATH\Libraries\Template.php(22): App\Libraries\Template->view('layout/index', [...])
+11 APPPATH\Controllers\User.php(335): App\Libraries\Template->rander('user/view', [...])
+12 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\User->view('19')
+13 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+14 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+15 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 13:31:24 --> Undefined variable $files_tab
+in APPPATH\Views\user\view.php on line 84.
+ 1 APPPATH\Views\user\view.php(84): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $files_tab', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Views\\user\\view.php', 84)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xamppp\\htdocs\\ownshop-main\\app\\Views\\user\\view.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1180): CodeIgniter\View\View->render('user/view', [], true)
+ 5 APPPATH\Views\layout\index.php(62): view('user/view')
+ 6 SYSTEMPATH\View\View.php(224): include('C:\\xamppp\\htdocs\\ownshop-main\\app\\Views\\layout\\index.php')
+ 7 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1180): CodeIgniter\View\View->render('layout/index', [], true)
+ 9 APPPATH\Libraries\Template.php(38): view('layout/index', [...])
+10 APPPATH\Libraries\Template.php(22): App\Libraries\Template->view('layout/index', [...])
+11 APPPATH\Controllers\User.php(335): App\Libraries\Template->rander('user/view', [...])
+12 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\User->view('21')
+13 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+14 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+15 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 13:31:40 --> Undefined property: App\Controllers\Team_members::$db
+in APPPATH\Controllers\Team_members.php on line 462.
+ 1 APPPATH\Controllers\Team_members.php(462): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$db', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 462)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 13:36:23 --> Undefined property: App\Controllers\Team_members::$db
+in APPPATH\Controllers\Team_members.php on line 462.
+ 1 APPPATH\Controllers\Team_members.php(462): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$db', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 462)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 13:36:31 --> Undefined property: App\Controllers\Team_members::$db
+in APPPATH\Controllers\Team_members.php on line 462.
+ 1 APPPATH\Controllers\Team_members.php(462): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$db', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 462)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-27 13:37:34 --> Undefined property: App\Controllers\Team_members::$db
+in APPPATH\Controllers\Team_members.php on line 446.
+ 1 APPPATH\Controllers\Team_members.php(446): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Team_members::$db', 'C:\\xamppp\\htdocs\\ownshop-main\\app\\Controllers\\Team_members.php', 446)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Team_members->list_data()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Team_members))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()

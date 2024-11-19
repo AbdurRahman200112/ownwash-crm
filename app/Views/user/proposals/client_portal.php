@@ -25,6 +25,11 @@
 <script type="text/javascript">
     $(document).ready(function () {
         var currencySymbol = "<?php echo $client_info->currency_symbol; ?>";
+        var showCommentOption = false;
+        if ("<?php echo get_setting("enable_comments_on_proposals") == "1" ?>") {
+            showCommentOption = true;
+        }
+
         $("#proposal-table").appTable({
             source: '<?php echo_uri("proposals/proposal_list_data_of_client/" . $client_id) ?>',
             order: [[0, "desc"]],
@@ -36,12 +41,15 @@
                 {title: "<?php echo app_lang("proposal_date") ?>", "iDataSort": 2},
                 {visible: false, searchable: false},
                 {title: "<?php echo app_lang("valid_until") ?>", "iDataSort": 4, "class": "w20p"},
+                {visible: false, searchable: false},
+                {visible: false, searchable: false},
                 {title: "<?php echo app_lang("amount") ?>", "class": "text-right"},
-                {title: "<?php echo app_lang("status") ?>", "class": "text-center"}
+                {title: "<?php echo app_lang("status") ?>", "class": "text-center"},
+                {visible: showCommentOption, title: "<?php echo app_lang("comments") ?>", "class": "text-center w50"}
 <?php echo $custom_field_headers; ?>,
                 {visible: false}
             ],
-            summation: [{column: 6, dataType: 'currency', currencySymbol: currencySymbol}]
+            summation: [{column: 8, dataType: 'currency', currencySymbol: currencySymbol}]
         });
     });
 </script>

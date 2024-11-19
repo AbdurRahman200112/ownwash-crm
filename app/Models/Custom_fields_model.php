@@ -157,8 +157,6 @@ class Custom_fields_model extends Crud_model {
         if ($user_type === "client") {
             $where .= " AND $custom_fields_table.hide_from_clients=0";
         }
-
-
         $sql = "SELECT id, title, field_type
                 FROM $custom_fields_table
                 WHERE $custom_fields_table.related_to='$related_to' AND $custom_fields_table.show_in_table=1 AND $custom_fields_table.deleted=0 $where    
@@ -166,7 +164,52 @@ class Custom_fields_model extends Crud_model {
 
         return $this->db->query($sql)->getResult();
     }
-
+    // function get_available_fields_for_table($related_to, $is_admin = 0, $user_type = "") {
+    //     $custom_fields_table = $this->db->prefixTable('custom_fields');
+    //     $job_info_table = $this->db->prefixTable('team_member_job_info');
+    //     $users_table = $this->db->prefixTable('users');
+    
+    //     $where = "";
+    
+    //     // Check visibility permission for non-admin users
+    //     if (!$is_admin) {
+    //         $where .= " AND $custom_fields_table.visible_to_admins_only = 0";
+    //     }
+    
+    //     // Check visibility permission for clients
+    //     if ($user_type === "client") {
+    //         $where .= " AND $custom_fields_table.hide_from_clients = 0";
+    //     }
+    
+    //     // Select custom fields and date_of_hire from the job info table
+    //     $sql = "SELECT 
+    //                 $custom_fields_table.id, 
+    //                 $custom_fields_table.title, 
+    //                 $custom_fields_table.field_type
+    //             FROM 
+    //                 $custom_fields_table
+    //             WHERE 
+    //                 $custom_fields_table.related_to = '$related_to' 
+    //                 AND $custom_fields_table.show_in_table = 1 
+    //                 AND $custom_fields_table.deleted = 0 $where
+    //             UNION ALL
+    //             SELECT 
+    //                 'salary_term' AS id, 
+    //                 'Salary Term' AS title, 
+    //                 'text' AS field_type
+    //             UNION ALL
+    //             SELECT 
+    //                 'date_of_hire' AS id, 
+    //                 'Date of Hire' AS title, 
+    //                 'date' AS field_type
+    //             FROM 
+    //                 $job_info_table
+    //             LIMIT 1";
+    
+    //     return $this->db->query($sql)->getResult();
+    // }
+    
+    
     function get_custom_field_filters($related_to, $is_admin = 0, $user_type = "") {
         $custom_fields_for_filter = $this->get_available_filters($related_to, $is_admin, $user_type);
 

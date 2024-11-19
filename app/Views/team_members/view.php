@@ -40,7 +40,7 @@
         <?php } ?>
 
         <?php if ($show_job_info) { ?>
-            <li><a  role="presentation" data-bs-toggle="tab" href="<?php echo_uri("team_members/job_info/" . $user_info->id); ?>" data-bs-target="#tab-job-info"> <?php echo app_lang('job_info'); ?></a></li>
+            <li><a  role="presentation" data-bs-toggle="tab" href="<?php echo_uri("team_members/job_info/" . $user_info->id); ?>" data-bs-target="#tab-job-info"> <?php echo 'Franchise Info'; ?></a></li>
         <?php } ?>
 
         <?php if ($show_account_settings) { ?>

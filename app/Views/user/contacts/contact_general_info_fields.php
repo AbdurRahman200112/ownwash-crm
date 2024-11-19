@@ -42,9 +42,9 @@
         </div>
     </div>
     <?php
-//show these filds during new contact creation
+    //show these filds during new contact creation
     if (!$model_info->id) {
-        ?>
+    ?>
         <div class="form-group">
             <div class="row">
                 <label for="email" class="<?php echo $label_column; ?>"><?php echo app_lang('email'); ?></label>
@@ -124,15 +124,15 @@
                     "id" => "gender_male",
                     "name" => "gender",
                     "class" => "form-check-input",
-                        ), "male", ($model_info->gender == "male") ? true : false);
+                ), "male", ($model_info->gender == "male") ? true : false);
                 ?>
-                <label for="gender_male" class="mr15 p0"><?php echo app_lang('male'); ?></label> 
+                <label for="gender_male" class="mr15 p0"><?php echo app_lang('male'); ?></label>
                 <?php
                 echo form_radio(array(
                     "id" => "gender_female",
                     "name" => "gender",
                     "class" => "form-check-input",
-                        ), "female", ($model_info->gender == "female") ? true : false);
+                ), "female", ($model_info->gender == "female") ? true : false);
                 ?>
                 <label for="gender_female" class="p0 mr15"><?php echo app_lang('female'); ?></label>
                 <?php
@@ -140,21 +140,21 @@
                     "id" => "gender_other",
                     "name" => "gender",
                     "class" => "form-check-input",
-                        ), "other", ($model_info->gender == "other") ? true : false);
+                ), "other", ($model_info->gender == "other") ? true : false);
                 ?>
                 <label for="gender_other" class=""><?php echo app_lang('other'); ?></label>
             </div>
         </div>
     </div>
 
-    <?php echo view("custom_fields/form/prepare_context_fields", array("custom_fields" => $custom_fields, "label_column" => $label_column, "field_column" => $field_column)); ?> 
+    <?php echo view("custom_fields/form/prepare_context_fields", array("custom_fields" => $custom_fields, "label_column" => $label_column, "field_column" => $field_column)); ?>
 
     <?php
-//show these filds during new contact creation
-//also check the client login setting
+    //show these filds during new contact creation
+    //also check the client login setting
 
     if (!$model_info->id && !get_setting("disable_client_login")) {
-        ?>
+    ?>
         <div class="form-group">
             <div class="row">
                 <label for="login_password" class="col-md-3"><?php echo app_lang('password'); ?></label>
@@ -188,41 +188,19 @@
             </div>
         </div>
 
-        <div class="form-group ">
-            <div class="col-md-12">  
-                <?php
-                echo form_checkbox("email_login_details", "1", true, "id='email_login_details' class='form-check-input'");
-                ?> <label for="email_login_details"><?php echo app_lang('email_login_details'); ?></label>
-            </div>
-        </div>
-    <?php } else if ($login_user->is_admin) { ?>
-        <div class="form-group ">
-            <div class="row">
-                <label for="is_primary_contact"  class="<?php echo $label_column; ?>"><?php echo app_lang('primary_contact'); ?></label>
+        <?php echo view("clients/contacts/contact_permission_fields"); ?>
 
-                <div class="<?php echo $field_column; ?>">
-                    <?php
-                    //is set primary contact, disable the checkbox
-                    $disable = "";
-                    if ($model_info->is_primary_contact) {
-                        $disable = "disabled='disabled'";
-                    }
-                    echo form_checkbox("is_primary_contact", "1", $model_info->is_primary_contact, "id='is_primary_contact' class='form-check-input mt-2' $disable");
-                    ?> 
-                </div>
-            </div>
-        </div>
     <?php } ?>
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $("#generate_password").click(function () {
+    $(document).ready(function() {
+        $("#generate_password").click(function() {
             $("#login_password").val(getRndomString(8));
         });
-        $("#show_hide_password").click(function () {
+        $("#show_hide_password").click(function() {
             var $target = $("#login_password"),
-                    type = $target.attr("type");
+                type = $target.attr("type");
             if (type === "password") {
                 $(this).attr("title", "<?php echo app_lang("hide_text"); ?>");
                 $(this).html("<span data-feather='eye-off' class='icon-16'></span>");
@@ -235,5 +213,9 @@
                 $target.attr("type", "password");
             }
         });
+
+        setTimeout(function() {
+            $("#generate_password").trigger("click");
+        }, 200);
     });
-</script>    
+</script>

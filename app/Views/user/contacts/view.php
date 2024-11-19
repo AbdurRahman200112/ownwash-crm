@@ -76,6 +76,9 @@
         <?php if ($user_info->id == $login_user->id && get_setting("enable_gdpr") && (get_setting("clients_can_request_account_removal") || get_setting("allow_clients_to_export_their_data"))) { ?>
             <li><a role="presentation" data-bs-toggle="tab" href="<?php echo_uri("clients/gdpr/" . $user_info->id); ?>" data-bs-target="#tab-gdpr">GDPR</a></li>
         <?php } ?>
+        <?php if ($can_edit_clients) { ?>
+            <li><a role="presentation" data-bs-toggle="tab" href="<?php echo_uri("clients/contact_permissions/" . $user_info->id); ?>" data-bs-target="#tab-contact-permissions"> <?php echo app_lang('permissions'); ?></a></li>
+        <?php } ?>
 
         <?php
         $hook_tabs = array();
@@ -98,6 +101,7 @@
         <div role="tabpanel" class="tab-pane fade" id="tab-my-preferences"></div>
         <div role="tabpanel" class="tab-pane fade" id="tab-user-left-menu"></div>
         <div role="tabpanel" class="tab-pane fade" id="tab-gdpr"></div>
+        <div role="tabpanel" class="tab-pane fade" id="tab-contact-permissions"></div>
         <?php
         foreach ($hook_tabs as $hook_tab) {
             ?>

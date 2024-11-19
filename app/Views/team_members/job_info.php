@@ -4,12 +4,12 @@
     <input name="user_id" type="hidden" value="<?php echo $user_id; ?>" />
     <div class="card">
         <div class=" card-header">
-            <h4><?php echo app_lang('job_info'); ?></h4>
+            <h4><?php echo 'Franchise Info'; ?></h4>
         </div>
         <div class="card-body">
             <div class="form-group">
                 <div class="row">
-                    <label for="job_title" class=" col-md-2"><?php echo app_lang('job_title'); ?></label>
+                    <label for="job_title" class=" col-md-2"><?php echo 'Franchise Name'; ?></label>
                     <div class="col-md-10">
                         <?php
                         echo form_input(array(
@@ -25,32 +25,26 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                    <label for="salary" class=" col-md-2"><?php echo app_lang('salary'); ?></label>
+                    <label for="salary_term" class=" col-md-2"><?php echo 'Status'; ?></label>
                     <div class="col-md-10">
                         <?php
-                        echo form_input(array(
-                            "id" => "salary",
-                            "name" => "salary",
-                            "value" => $job_info->salary ? to_decimal_format($job_info->salary) : "",
-                            "class" => "form-control",
-                            "placeholder" => app_lang('salary')
-                        ));
-                        ?>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <label for="salary_term" class=" col-md-2"><?php echo app_lang('salary_term'); ?></label>
-                    <div class="col-md-10">
-                        <?php
-                        echo form_input(array(
-                            "id" => "salary_term",
-                            "name" => "salary_term",
-                            "value" => $job_info->salary_term,
-                            "class" => "form-control",
-                            "placeholder" => app_lang('salary_term')
-                        ));
+
+                        $options = array(
+                            'cancelled by franchise' => 'Cancelled by Franchise',
+                            'cancelled by customer' => 'Cancelled by Customer',
+                            'done' => 'Done'
+                        );
+
+                        echo form_dropdown(
+                            'salary_term', // name attribute of the dropdown
+                            $options, // options array
+                            '',
+                            array(
+                                'id' => 'salary_term', // id attribute of the dropdown
+                                'name' => 'salary_term', // add name attribute
+                                'class' => 'form-control' // CSS class
+                            )
+                        );
                         ?>
                     </div>
                 </div>
@@ -85,11 +79,13 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
         $("#job-info-form").appForm({
             isModal: false,
-            onSuccess: function (result) {
-                appAlert.success(result.message, {duration: 10000});
+            onSuccess: function(result) {
+                appAlert.success(result.message, {
+                    duration: 10000
+                });
                 window.location.href = "<?php echo get_uri("team_members/view/" . $user_id); ?>" + "/job_info";
             }
         });
@@ -98,4 +94,4 @@
         setDatePicker("#date_of_hire");
 
     });
-</script>    
+</script>

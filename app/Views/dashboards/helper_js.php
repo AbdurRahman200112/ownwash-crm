@@ -1,13 +1,9 @@
 <script>
-
-    //adjust height of widgets container
     function adjustHeightOfWidgetContainer() {
         if ($('.js-widget-container').height() > $(window).height() - 175) {
             $('.js-widget-container').height($(window).height() - 170).addClass("overflow-y-scroll");
         }
     }
-
-    //prepare the columns according to column size
     function addNewColumn(columnValue) {
         var newColumnDiv = "",
                 columns = columnValue.split("-");
@@ -17,8 +13,6 @@
         }
 
         $("#widget-column-container").append("<row class='widget-row clearfix d-flex bg-white' data-column-ratio='" + columnValue + "'><div class='float-start row-controller text-off font-16'><span class='move'><i data-feather='menu' class='icon-16'></i></span><span class='delete delete-widget-row'><i data-feather='x' class='icon-16'></i></span></div><div class='float-start clearfix row-container row pr15 pl15'>" + newColumnDiv + "</div></row>");
-
-        //new row added. hide the collapse panel
         $("#add-column-button").trigger("click");
         
         feather.replace();
@@ -28,10 +22,7 @@
         }, 500);
 
     }
-
-    //initialize sortable
     function initSortable() {
-
         var options = {
             animation: 150,
             chosenClass: "sortable-chosen",
@@ -39,7 +30,6 @@
             filter: ".empty-area-text",
             cancel: ".empty-area-text",
             onAdd: function (e) {
-                //moved to the new column/row. save the widget position
                 saveWidgetPosition();
 
                 removeEmptyAreaText(e.to);
@@ -47,49 +37,35 @@
                 addEmptyAreaText(e.from);
             },
             onUpdate: function (e) {
-                //moved to the same column/row. save the widget position
                 saveWidgetPosition();
-
                 removeEmptyAreaText(e.to);
                 addEmptyAreaText(e.to);
                 addEmptyAreaText(e.from);
             }
         };
-
-        //make elements sortable
         $(".add-column-panel").each(function (index) {
 
             var id = this.id;
             options.group = "add-column-panel";
             Sortable.create($("#" + id)[0], options);
         });
-
-        //make the widget rows sortable
         options.group = "widget-column-container";
         Sortable.create($("#widget-column-container")[0], options);
     }
-
-    //remove drag/drop text from new added area if there is no elements available
     function removeEmptyAreaText(index) {
         if ($(index).has("div").length > 0 && $(index).attr("id") !== "widget-column-container") {
             $(index).find("span.empty-area-text").remove();
         }
     }
-
-    //add drag/drop text from removed area if there is no elements available
     function addEmptyAreaText(index) {
         if ($(index).has("div").length < 1) {
             if ($(index).hasClass("js-widget-container")) {
-                //if it's widgets container area
                 $(index).html("<span class='text-off empty-area-text'><?php echo app_lang('no_more_widgets_available'); ?></span>");
             } else {
-                //if it's widgets row area
                 $(index).html("<span class='text-off empty-area-text'><?php echo app_lang('drag_and_drop_widgets_here'); ?></span>");
             }
         }
     }
-
-    //save the widget's position
     function saveWidgetPosition() {
         var rows = [];
 

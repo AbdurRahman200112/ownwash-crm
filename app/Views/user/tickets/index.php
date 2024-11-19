@@ -36,11 +36,17 @@
         if ("<?php echo $show_project_reference; ?>" == "1") {
             projectVisibility = true;
         }
+        
+        var radioButtons = [];
+        if(userType === "staff"){
+            radioButtons.push({text: '<?php echo app_lang("open") ?>', name: "status", value: "open", isChecked: true}, {text: '<?php echo app_lang("closed") ?>', name: "status", value: "closed"});
+        }
 
 
         $("#ticket-table").appTable({
             source: '<?php echo_uri("tickets/ticket_list_data_of_client/" . $client_id) ?>',
             order: [[6, "desc"]],
+            radioButtons: radioButtons,
             filterDropdown: [<?php echo $custom_field_filters; ?>],
             columns: [
                 {visible: false, searchable: false},

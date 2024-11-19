@@ -13,6 +13,7 @@ class Clients_model extends Crud_model {
 
     function get_details($options = array()) {
         $clients_table = $this->db->prefixTable('clients');
+        
         $projects_table = $this->db->prefixTable('projects');
         $users_table = $this->db->prefixTable('users');
         $invoices_table = $this->db->prefixTable('invoices');

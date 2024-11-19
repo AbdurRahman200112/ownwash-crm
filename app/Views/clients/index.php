@@ -8,7 +8,6 @@ $isAdmin = isset($_SESSION['is_admin']) ? $_SESSION['is_admin'] : 0;
         <ul id="client-tabs" data-bs-toggle="ajax-tab" class="nav nav-tabs bg-white title" role="tablist">
            <li><a role="presentation" data-bs-toggle="tab" href="#overview" ><?php echo app_lang('overview'); ?></a></li>
             <li><a role="presentation" data-bs-toggle="tab" href="<?php echo_uri("clients/clients_list/"); ?>" data-bs-target="#clients_list"><?php echo app_lang('clients'); ?></a></li>
-            <li><a role="presentation" data-bs-toggle="tab" href="<?php echo_uri("clients/contacts/"); ?>" data-bs-target="#contacts"><?php echo app_lang('contacts'); ?></a></li>
             <div class="tab-title clearfix no-border">
                 <div class="title-button-group">
                     <?php

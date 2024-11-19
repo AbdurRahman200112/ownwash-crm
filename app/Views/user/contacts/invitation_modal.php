@@ -6,8 +6,8 @@
             <div class="row">
                 <input type="hidden" name="client_id" value="<?php echo $client_info->id; ?>" />
 
-                <label for="email" class=" col-md-12"><?php echo sprintf(app_lang('invite_an_user'), $client_info->company_name); ?></label>
-                <div class="col-md-12">
+                <label for="email" class="col-md-3"><?php echo sprintf(app_lang('invite_an_user'), $client_info->company_name); ?></label>
+                <div class="col-md-9">
                     <?php
                     echo form_input(array(
                         "id" => "email",
@@ -24,7 +24,8 @@
                 </div>
             </div>
         </div>
-        <br />
+
+        <?php echo view("clients/contacts/contact_permission_fields"); ?>
     </div>
 </div>
 

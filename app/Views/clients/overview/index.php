@@ -184,10 +184,8 @@
 
                             <div class="row mt-2 p-3" style="background-color:#005058">
                                 <div class="col-md-5">
-                                    <p
-                                        style="color:#005058;background-color:yellow; padding:15px; width:100%;border-radius:20px;text-align:center">
+                                    <p style="color:#005058;background-color:yellow; padding:15px; width:100%;border-radius:20px;text-align:center">
                                         <b>Business Address</b></p>
-
                                 </div>
                                 <div class="col-md-7">
                                     <p style="color:white">305, Satguru Parinay, Vijay Nagar, Indore, MP - 452010</p>

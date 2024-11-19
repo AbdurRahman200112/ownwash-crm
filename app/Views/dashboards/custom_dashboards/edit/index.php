@@ -25,9 +25,9 @@
                 </div>
 
                 <div class="card-body clearfix">
-                    <!-- <div class="col-md-12 p15 bg-off-white float-end" id="widget-row-area">
+                    <div class="col-md-12 p15 bg-off-white float-end" id="widget-row-area">
                         <?php echo view("dashboards/custom_dashboards/edit/dashboard_rows") ?>
-                    </div> -->
+                    </div>
 
                 </div>
                 <?php echo form_close(); ?>

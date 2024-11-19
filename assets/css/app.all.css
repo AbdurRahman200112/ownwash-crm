@@ -90,6 +90,9 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.child,table.dataTable.dtr-inlin
 .datepicker-dropdown.datepicker-orient-right:before {
   right: 6px;
 }
+.project-timeline-container{
+  display: none !important;
+}
 .datepicker-dropdown.datepicker-orient-right:after {
   right: 7px;
 }

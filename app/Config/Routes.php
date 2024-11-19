@@ -16,7 +16,7 @@ $routes->post('customers/save', 'Customers::save');
 $routes->post('franchise/save', 'Franchise::save');
 $routes->post('franchises/list', 'Franchises::list');
 $routes->post('customerfetch/list_data', 'CustomerFetch::list_data');
-$routes->get('user', 'User::index');
+// $routes->get('user', 'Users::index');
 $routes->get('customers', 'Clients::index');
 $routes->get('overview', 'Clients::index');
 $routes->get('franchise/edit_franchise/(:num)', 'Franchise::edit/$1');

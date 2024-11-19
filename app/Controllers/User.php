@@ -278,12 +278,14 @@ class User extends Security_Controller {
         }
 
         $client_labels = make_labels_view_data($data->labels_list, true);
+        $phone = isset($data->phone) ? $data->phone : '';
+        $country = isset($data->country) ? $data->country : '';
 
         $row_data = array($data->id,
             anchor(get_uri("user/view/" . $data->id), $data->company_name),
             $data->primary_contact ? $primary_contact : "",
-            $group_list,
-            $client_labels,
+            $phone, // Phone number
+            $country, // Country
             to_decimal_format($data->total_projects),
             to_currency($data->invoice_value, $data->currency_symbol),
             to_currency($data->payment_received, $data->currency_symbol),

@@ -44,7 +44,6 @@
 if (!isset($project_labels_dropdown)) {
     $project_labels_dropdown = "0";
 }
-
 ?>
 
 <script type="text/javascript">
@@ -57,10 +56,12 @@ if (isset($page_type) && $page_type === 'dashboard') {
 
 
         var filters = [];
+        var statusOptions = "";
 
         //don't show filters if hideTools is true 
         if (hideTools) {
             filters = false;
+            statusOptions = <?php echo view("project_status/project_status_dropdown", array("project_statuses" => $project_statuses, "selected_status_key" => "open")); ?>;
         } else {
             if (<?php echo $project_labels_dropdown; ?>) {
                 var filters = [{name: "project_label", class: "w200", options: <?php echo $project_labels_dropdown; ?>}, <?php echo $custom_field_filters; ?>];
@@ -68,6 +69,8 @@ if (isset($page_type) && $page_type === 'dashboard') {
                 //$project_labels_dropdown is empty
                 var filters = [<?php echo $custom_field_filters; ?>];
             }
+
+            statusOptions = <?php echo view("project_status/project_status_dropdown", array("project_statuses" => $project_statuses, "selected_status_keys" => array("open", "completed"))); ?>;
         }
 
         var optionVisibility = false;
@@ -84,7 +87,7 @@ if (isset($page_type) && $page_type === 'dashboard') {
                 {
                     name: "status_id",
                     text: "<?php echo app_lang('status'); ?>",
-                    options: <?php echo view("project_status/project_status_dropdown", array("project_statuses" => $project_statuses, "selected_status_key" => "open")); ?>
+                    options: statusOptions
                 }
             ],
             filterDropdown: filters,
